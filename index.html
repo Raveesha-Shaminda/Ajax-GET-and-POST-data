@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raveesha Shaminda</title>
+    <!-- Include jQuery from the CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body> 
+    <h2>jQuery GET and POST methods</h2>
+    
+    <button id="post">POST</button>
+    <div><p id="post-respons"></p></div>
+
+    <button id="get">GET</button>
+    <div><p id="get-respons"></p></div>
+
+
+    <script>
+        $(document).ready(function(){
+    var data = {"id": "24","name": "Raveesha Shaminda","mobile": "0715248939","email": "raveesha@gmail.com"};
+
+    $("#post").click(function(){
+        $.post({
+            url: "https://653300a3d80bd20280f63618.mockapi.io/api/v1/user",
+            data: data,
+            
+            success:function(result){
+                alert("data post successful")
+                console.log(JSON.stringify(result))
+                $('#post-respons').append(JSON.stringify(result))
+            }
+        });
+    });
+
+    $("#get").click(function(){
+
+        $.get({
+            url:"https://653300a3d80bd20280f63618.mockapi.io/api/v1/user/24",
+            success:function(result){
+                alert("get successful")
+                console.log(JSON.stringify(result))
+                $("#get-respons").append(JSON.stringify(result))
+            }
+        });
+
+    });
+
+});
+    </script>
+</body>
+</html>
